@@ -6,7 +6,9 @@
   "scripts": {
     "build": "next build",
     "check": "next lint && tsc --noEmit",
-    "dev": "next dev --turbo",
+    "dev": "concurrently \"next dev --turbo\" \"npm run server\"",
+    "dev:frontend": "next dev --turbo",
+    "server": "node server/server.cjs",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mdx}\" --cache",
     "format:write": "prettier --write \"**/*.{ts,tsx,js,jsx,mdx}\" --cache",
     "lint": "next lint",
@@ -20,7 +22,11 @@
     "next": "^15.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "zod": "^3.24.2"
+    "zod": "^3.24.2",
+    "yjs": "^13.6.10",
+    "y-websocket": "^2.0.4",
+    "ws": "^8.18.0",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
@@ -28,6 +34,10 @@
     "@types/node": "^20.14.10",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "@types/ws": "^8.5.12",
+    "@types/uuid": "^10.0.0",
+    "concurrently": "^9.1.0",
+    "ts-node": "^10.9.2",
     "eslint": "^9.23.0",
     "eslint-config-next": "^15.2.3",
     "postcss": "^8.5.3",
